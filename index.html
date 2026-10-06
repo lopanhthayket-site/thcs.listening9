@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Luyện nghe - Lớp Anh thầy Kết</title>
+
+<style>
+:root{
+  --primary:#6b8e23;
+  --primary-dark:#4f6f18;
+  --primary-light:#f0f7dc;
+  --green:#4f8a2a;
+  --green-bg:#edf8df;
+  --red:#d94b4b;
+  --red-bg:#fff0ed;
+  --yellow:#f6c945;
+  --orange:#ef9b3f;
+  --brown:#76513b;
+  --text:#3f4737;
+  --muted:#77806b;
+  --card:#fffdf7;
+  --border:#d8dfbd;
+  --shadow:0 8px 22px rgba(83,104,45,.13);
+}
+
+*{box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  margin:0;
+  color:var(--text);
+  position:relative;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.55;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(246,201,69,.20) 0 42px, transparent 43px),
+    radial-gradient(circle at 92% 14%, rgba(126,179,77,.18) 0 55px, transparent 56px),
+    linear-gradient(180deg,#eef7d9 0%,#f9f5dc 38%,#fff8ed 100%);
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"🌤️";
+  position:fixed;
+  top:12px;
+  left:18px;
+  font-size:46px;
+  opacity:.65;
+  pointer-events:none;
+  z-index:0;
+}
+
+body::after{
+  content:"🌻  🌼  🌻  🌼  🌻";
+  position:fixed;
+  bottom:2px;
+  left:0;
+  width:100%;
+  text-align:center;
+  font-size:25px;
+  letter-spacing:12px;
+  opacity:.48;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* 🌳 HAI BÊN NÔNG TRẠI */
+.farm-side{
+  position:fixed;
+  top:0;
+  bottom:0;
+  width:clamp(55px,9vw,125px);
+  z-index:0;
+  pointer-events:none;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  align-items:center;
+  padding:55px 0 45px;
+  font-size:clamp(28px,4vw,52px);
+  filter:drop-shadow(0 3px 2px rgba(67,84,37,.13));
+}
+
+.farm-side.left{left:0;}
+.farm-side.right{right:0;}
+
+.farm-side span{
+  display:block;
+  animation:floatFarm 3.2s ease-in-out infinite;
+  animation-delay:var(--delay,0s);
+  transform-origin:center bottom;
+}
+
+.farm-side span:nth-child(even){
+  animation-name:swayFarm;
+}
+
+@keyframes floatFarm{
+  0%,100%{transform:translateY(0) rotate(-2deg);}
+  50%{transform:translateY(-7px) rotate(2deg);}
+}
+
+@keyframes swayFarm{
+  0%,100%{transform:rotate(-5deg) translateX(0);}
+  50%{transform:rotate(5deg) translateX(4px);}
+}
+
+/* Con đường nhỏ hai bên */
+.farm-path{
+  position:fixed;
+  top:0;
+  bottom:0;
+  width:18px;
+  background:repeating-linear-gradient(
+    180deg,
+    rgba(193,167,104,.16) 0 24px,
+    rgba(255,255,255,.16) 24px 48px
+  );
+  opacity:.7;
+  z-index:0;
+  pointer-events:none;
+}
+.farm-path.left{left:clamp(55px,9vw,125px);}
+.farm-path.right{right:clamp(55px,9vw,125px);}
+
+/* Khung trung tâm như một cánh đồng */
+.container{
+  max-width:1120px;
+}
+
+/* Header có hàng rào */
+.farm-fence{
+  margin:-3px auto 15px;
+  position:relative;
+  z-index:2;
+  font-size:24px;
+  letter-spacing:4px;
+  opacity:.95;
+}
+
+/* Animation nhẹ cho các bài */
+.exercise:nth-child(3n+1){--tilt:-.15deg;}
+.exercise:nth-child(3n+2){--tilt:.12deg;}
+.exercise:nth-child(3n){--tilt:-.08deg;}
+
+.exercise:hover{
+  transform:translateY(-3px) rotate(var(--tilt));
+}
+
+/* Huy hiệu nhỏ ở mỗi bài */
+.exercise-title::first-letter{}
+
+/* Mobile: hai bên vẫn giữ nhưng thu nhỏ */
+@media(max-width:900px){
+  .farm-side{
+    width:44px;
+    font-size:28px;
+    padding-top:115px;
+    padding-bottom:70px;
+  }
+  .farm-path{
+    display:none;
+  }
+}
+
+@media(max-width:700px){
+  .farm-side{
+    width:31px;
+    font-size:21px;
+    padding-top:125px;
+    padding-bottom:75px;
+    opacity:.72;
+  }
+  .farm-side span:nth-child(3n){
+    display:none;
+  }
+  .container{
+    width:calc(100% - 18px);
+  }
+}
+
+
+.container{
+  position:relative;
+  z-index:1;
+  width:min(1120px,calc(100% - 24px));
+  margin:0 auto;
+  padding:18px 0 55px;
+}
+
+/* HEADER NÔNG TRẠI */
+header{
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+  border:3px solid rgba(255,255,255,.75);
+  border-radius:24px;
+  padding:25px 22px 27px;
+  margin-bottom:20px;
+  text-align:center;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,0)),
+    linear-gradient(180deg,#79a942 0%,#668f32 58%,#567b29 100%);
+  box-shadow:0 10px 28px rgba(76,105,39,.22);
+}
+
+header::before{
+  content:"☁️       ☁️";
+  position:absolute;
+  top:4px;
+  left:0;
+  width:100%;
+  font-size:31px;
+  opacity:.65;
+  letter-spacing:34px;
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+header::after{
+  content:"🐔   🐮   🐷   🐑   🐰";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:3px;
+  font-size:27px;
+  letter-spacing:9px;
+  opacity:.9;
+  pointer-events:none;
+}
+
+header h1{
+  position:relative;
+  z-index:2;
+  margin:0;
+  font-size:clamp(22px,4vw,34px);
+  line-height:1.2;
+  text-shadow:0 3px 0 rgba(67,89,30,.28);
+}
+
+header p{
+  position:relative;
+  z-index:2;
+  margin:9px 0 20px;
+  font-size:14px;
+  font-weight:700;
+  opacity:.97;
+}
+
+.farm-badge{
+  position:relative;
+  z-index:2;
+  display:inline-block;
+  background:#fff7d6;
+  color:#5d7527;
+  border:2px solid rgba(255,255,255,.9);
+  border-radius:999px;
+  padding:6px 14px;
+  font-size:13px;
+  font-weight:800;
+  box-shadow:0 4px 10px rgba(0,0,0,.12);
+}
+
+/* BÀI TẬP */
+.exercise{
+  position:relative;
+  background:var(--card);
+  border:2px solid var(--border);
+  border-radius:19px;
+  margin-bottom:17px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+
+.exercise:hover{
+  transform:translateY(-2px);
+  box-shadow:0 11px 27px rgba(83,104,45,.17);
+}
+
+.exercise::after{
+  content:"🌱";
+  position:absolute;
+  right:10px;
+  bottom:6px;
+  font-size:25px;
+  opacity:.18;
+  pointer-events:none;
+}
+
+.exercise-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:13px;
+  padding:14px 16px;
+  background:linear-gradient(90deg,#f1f7df,#fff9e9);
+  border-bottom:2px solid #e1e7c9;
+}
+
+.exercise-title-wrap{
+  cursor:pointer;
+  flex:1;
+  min-width:0;
+  padding:3px 0;
+  user-select:none;
+}
+
+.exercise-title-wrap:hover .exercise-title{
+  color:var(--primary-dark);
+}
+
+.exercise-title{
+  font-weight:800;
+  font-size:18px;
+  color:#526d25;
+}
+
+.exercise-number{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:3px;
+  font-weight:600;
+}
+
+.toggle-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:27px;
+  height:27px;
+  margin-right:5px;
+  color:#fff;
+  background:var(--primary);
+  border-radius:50%;
+  font-size:17px;
+  transition:transform .18s ease,background .18s ease;
+}
+
+.exercise.open .toggle-icon{
+  background:#e39a35;
+}
+
+.controls{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
+}
+
+.audio-player{
+  height:42px;
+  width:300px;
+  max-width:100%;
+  accent-color:var(--primary);
+}
+
+.speed-select{
+  height:42px;
+  border:2px solid #b7c88f;
+  background:#fffef8;
+  color:#4f5e36;
+  border-radius:11px;
+  font-size:14px;
+  padding:0 10px;
+  font-weight:800;
+  cursor:pointer;
+  outline:none;
+}
+
+.speed-select:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(107,142,35,.12);
+}
+
+/* NỘI DUNG */
+.exercise-body{
+  display:none;
+  padding:16px;
+  background:linear-gradient(180deg,#fffef9 0%,#fff9ef 100%);
+}
+
+.exercise.open .exercise-body{
+  display:block;
+}
+
+.listen-box{
+  position:relative;
+  border:2px solid #e1e5c8;
+  background:#fffdf7;
+  padding:14px 15px 11px;
+  border-radius:15px;
+  font-size:17px;
+  box-shadow:inset 0 1px 0 #fff;
+}
+
+.listen-box::before{
+  content:"🌾";
+  position:absolute;
+  right:12px;
+  top:7px;
+  opacity:.18;
+  font-size:28px;
+}
+
+.cloze-title{
+  font-weight:800;
+  color:#5f7d29;
+  margin-bottom:11px;
+  font-size:16px;
+}
+
+.transcript{
+  font-size:16px;
+  line-height:1.9;
+}
+
+.transcript p{
+  margin:0 0 14px;
+}
+
+.transcript strong{
+  color:#b46c28;
+}
+
+.blank-wrap{
+  display:inline-flex;
+  align-items:baseline;
+  gap:4px;
+  white-space:nowrap;
+}
+
+.answer-input{
+  width:135px;
+  max-width:42vw;
+  border:0;
+  border-bottom:3px dotted #89946d;
+  outline:none;
+  background:#fffdf2;
+  font:inherit;
+  color:#37402f;
+  padding:0 5px 1px;
+  text-align:center;
+  border-radius:4px 4px 0 0;
+  transition:.15s ease;
+}
+
+.answer-input:focus{
+  border-bottom:3px solid var(--primary);
+  background:#f2f8df;
+  box-shadow:0 2px 0 rgba(107,142,35,.08);
+}
+
+.answer-input.correct{
+  color:#3d7c24;
+  border-bottom-color:#4f8a2a;
+  background:var(--green-bg);
+  font-weight:700;
+}
+
+.answer-input.wrong{
+  color:var(--red);
+  border-bottom-color:var(--red);
+  background:var(--red-bg);
+  text-decoration:line-through;
+  text-decoration-thickness:2px;
+}
+
+.feedback{
+  display:inline;
+  font-weight:800;
+  font-size:15px;
+}
+
+.feedback.correct{color:#3f8b28;}
+.feedback.wrong{color:#d94b4b;}
+
+.correct-answer{
+  color:#d94b4b;
+  font-weight:800;
+  margin-left:3px;
+}
+
+.listen-note{
+  margin:12px 0 0;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.actions{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:12px;
+  margin-top:13px;
+}
+
+.score{
+  font-weight:800;
+  color:#637c2b;
+  margin-right:auto;
+}
+
+.show-answer{
+  border:2px solid #8da35d;
+  background:#fffdf4;
+  color:#566d2c;
+  padding:9px 15px;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+  border-radius:11px;
+  transition:.15s ease;
+}
+
+.show-answer:hover{
+  background:#edf5d9;
+  transform:translateY(-1px);
+}
+
+.answers-shown .show-answer{
+  border-color:#d9a04c;
+  color:#9a6724;
+}
+
+/* TỔNG ĐIỂM */
+.total-result{
+  display:none;
+  position:sticky;
+  bottom:12px;
+  z-index:20;
+  background:#fff8d9;
+  border:3px solid #d9b247;
+  color:#5d672f;
+  border-radius:17px;
+  box-shadow:0 9px 27px rgba(83,75,28,.20);
+  padding:13px 16px;
+  text-align:center;
+  font-weight:900;
+  margin-top:7px;
+}
+
+.total-result.show{
+  display:block;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+  body::before{
+    font-size:34px;
+    left:5px;
+  }
+
+  .container{
+    width:calc(100% - 12px);
+    padding-top:7px;
+  }
+
+  header{
+    border-radius:17px;
+    padding:19px 11px 28px;
+    margin-bottom:12px;
+  }
+
+  header h1{
+    font-size:22px;
+  }
+
+  header p{
+    font-size:12.5px;
+    margin-bottom:16px;
+  }
+
+  header::after{
+    font-size:21px;
+    letter-spacing:3px;
+  }
+
+  .farm-badge{
+    font-size:11.5px;
+    padding:5px 10px;
+  }
+
+  .exercise{
+    border-radius:14px;
+    margin-bottom:13px;
+  }
+
+  .exercise-header{
+    flex-direction:column;
+    align-items:stretch;
+    padding:11px;
+  }
+
+  .exercise-title{
+    font-size:16px;
+    padding-right:20px;
+  }
+
+  .exercise-number{
+    font-size:11.5px;
+  }
+
+  .toggle-icon{
+    width:24px;
+    height:24px;
+    font-size:15px;
+  }
+
+  .controls{
+    width:100%;
+  }
+
+  .audio-player{
+    flex:1;
+    width:auto;
+    min-width:0;
+  }
+
+  .speed-select{
+    width:78px;
+    flex-shrink:0;
+    padding:0 6px;
+  }
+
+  .exercise-body{
+    padding:10px;
+  }
+
+  .listen-box{
+    padding:10px;
+    font-size:16px;
+    border-radius:12px;
+  }
+
+  .transcript{
+    font-size:15.5px;
+    line-height:1.82;
+  }
+
+  .transcript p{
+    margin-bottom:11px;
+  }
+
+  .answer-input{
+    width:110px;
+    max-width:34vw;
+  }
+
+  .actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .score{
+    text-align:right;
+    margin-right:0;
+  }
+
+  .show-answer{
+    width:100%;
+  }
+
+  body::after{
+    font-size:18px;
+    letter-spacing:5px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- 🌳 CẢNH QUAN NÔNG TRẠI HAI BÊN -->
+<div class="farm-side left" aria-hidden="true">
+  <span style="--delay:.0s">🌳</span>
+  <span style="--delay:.5s">🌻</span>
+  <span style="--delay:1s">🌲</span>
+  <span style="--delay:1.5s">🌼</span>
+  <span style="--delay:2s">🍎</span>
+  <span style="--delay:2.5s">🌳</span>
+</div>
+
+<div class="farm-side right" aria-hidden="true">
+  <span style="--delay:.3s">🌲</span>
+  <span style="--delay:.8s">🌻</span>
+  <span style="--delay:1.3s">🌳</span>
+  <span style="--delay:1.8s">🍎</span>
+  <span style="--delay:2.3s">🌼</span>
+  <span style="--delay:2.8s">🌳</span>
+</div>
+
+<div class="farm-path left" aria-hidden="true"></div>
+<div class="farm-path right" aria-hidden="true"></div>
+
+<div class="container">
+
+  <!-- ======================================================
+       HEADER
+       ====================================================== -->
+
+  <header>
+
+<h1>
+  🎧 Luyện nghe Anh 9 - Lớp Anh thầy Kết
+</h1>
+
+<p>
+  Nghe và điền từ còn thiếu • Có thể chỉnh tốc độ audio
+</p>
+
+  </header>
+
+  <!-- ======================================================
+       DANH SÁCH BÀI
+       ====================================================== -->
+
+  <main id="exerciseContainer"></main>
+
+  <!-- ======================================================
+       TỔNG ĐIỂM
+       ====================================================== -->
+
+  <div
+    id="totalResult"
+    class="total-result">
+  </div>
+
+</div>
+
+<script>
+
+
+/* ==========================================================
+   1. CẤU HÌNH AUDIO
+   ========================================================== */
+
+const AUDIO_FOLDER = "";
+
+
+/* ==========================================================
+   2. DỮ LIỆU BÀI NGHE
+   ========================================================== */
+
+const EXERCISES = [
+
+{
+  id: "Unit2",
+
+  title: "Teen Life: Staying Fit & Healthy Choices",
+
+  note: "",
+
+  transcript: `
+  <p><strong>Speaker 1:</strong> I used to lift <span class="blank" data-answer="weights"></span>, but I didn’t really enjoy it. So that’s when I started <span class="blank" data-answer="swimming"></span>. Now I do it about twice a week. It’s much more <span class="blank" data-answer="fun"></span>. I go to a nice <span class="blank" data-answer="pool"></span> near my office. It’s never too <span class="blank" data-answer="crowded"></span>, which is great. There are <span class="blank" data-answer="friendly"></span> people who go there, so it’s a good place to meet people.</p>
+
+  <p><strong>Speaker 2:</strong> I go out every <span class="blank" data-answer="morning"></span>. It’s a great way to start the day. It’s more <span class="blank" data-answer="interesting"></span> than exercising at home like I used to. That was really <span class="blank" data-answer="boring"></span>. I go to a <span class="blank" data-answer="beach"></span> near my house. It’s <span class="blank" data-answer="lovely"></span> in the early morning. There’s hardly anyone there and you can listen to the <span class="blank" data-answer="ocean"></span> as you do it.</p>
+
+  <p><strong>Speaker 3:</strong> I used to play both <span class="blank" data-answer="tennis"></span> and volleyball. But I play mainly <span class="blank" data-answer="volleyball"></span> now. I think it’s a lot more fun. I thought tennis was very <span class="blank" data-answer="tiring"></span>. It was also <span class="blank" data-answer="difficult"></span> to find a partner, and the courts were always crowded, too. With volleyball, I have no <span class="blank" data-answer="trouble"></span> finding somewhere to play.</p>
+
+  <p><strong>Speaker 4:</strong> I used to take long <span class="blank" data-answer="walks"></span> every day, but it got boring. I wanted something more <span class="blank" data-answer="exciting"></span>, so that’s when I took up <span class="blank" data-answer="rollerblading"></span>. It’s really fun! But, it’s not as <span class="blank" data-answer="easy"></span> as it looks. It took me a long time to <span class="blank" data-answer="learn"></span> how to do it. I fell a lot at the beginning. The great thing is you can do it almost anywhere. My <span class="blank" data-answer="friends"></span> think I’m kind of strange because none of them do it, but I love it.</p>
+
+  <p><strong>Speaker 5:</strong> I finally bought myself a <span class="blank" data-answer="bicycle"></span>. It’s a great way to keep <span class="blank" data-answer="fit"></span>. I think it’s better than going to a <span class="blank" data-answer="health"></span> club. It took me a long time to learn to ride it in <span class="blank" data-answer="traffic"></span>. I nearly fell off a couple of times. I don’t often go on busy streets because that can be <span class="blank" data-answer="dangerous"></span>, but there are plenty of places where I can ride near where I live. I use it to get to work sometimes, but only if the <span class="blank" data-answer="weather"></span> is nice.</p>
+
+  <p><strong>Speaker 6:</strong> I used to go to <span class="blank" data-answer="aerobics"></span> class, but I found it pretty silly - all that jumping around. So that’s when I decided to take <span class="blank" data-answer="golf"></span> lessons. It can be pretty <span class="blank" data-answer="expensive"></span> because you have to buy all your <span class="blank" data-answer="equipment"></span> and club fees are high. People think it’s very easy, but it’s not. It’s also good <span class="blank" data-answer="exercise"></span> because you have to <span class="blank" data-answer="walk"></span> a lot.</p>
+`
+}
+
+
+];
+
+
+/* ==========================================================
+   3. ELEMENT
+   ========================================================== */
+
+const container =
+  document.getElementById("exerciseContainer");
+
+const totalResult =
+  document.getElementById("totalResult");
+
+
+/* ==========================================================
+   4. CHUẨN HÓA ĐÁP ÁN
+   ========================================================== */
+
+function normalizeAnswer(value){
+
+  return String(value ?? "")
+
+    .trim()
+
+    .toLowerCase()
+
+    .replace(/[’‘]/g,"'")
+
+    .replace(/\s+/g," ");
+}
+
+
+/* ==========================================================
+   5. ESCAPE HTML
+   ========================================================== */
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#039;");
+}
+
+
+/* ==========================================================
+   6. KIỂM TRA ĐÁP ÁN
+   ========================================================== */
+
+function isCorrect(userAnswer,correctAnswer){
+
+  return (
+    normalizeAnswer(userAnswer)
+    ===
+    normalizeAnswer(correctAnswer)
+  );
+}
+
+
+/* ==========================================================
+   7. TẠO Ô TRỐNG
+   ========================================================== */
+
+function renderTranscript(transcript){
+
+  const temp =
+    document.createElement("div");
+
+
+  temp.innerHTML =
+    transcript;
+
+
+  const blanks =
+    temp.querySelectorAll(".blank");
+
+
+  blanks.forEach(
+    function(blank,index){
+
+      const answer =
+        blank.dataset.answer || "";
+
+
+      blank.outerHTML = `
+
+        <span class="blank-wrap">
+
+          <input
+
+            type="text"
+
+            class="answer-input"
+
+            autocomplete="off"
+
+            autocapitalize="none"
+
+            spellcheck="false"
+
+            data-blank-index="${index}"
+
+            data-answer="${escapeHTML(answer)}"
+
+            aria-label="Ô trống ${index + 1}"
+
+          >
+
+          <span
+
+            class="feedback"
+
+            data-feedback="${index}"
+
+          ></span>
+
+        </span>
+
+      `;
+
+    }
+  );
+
+
+  return temp.innerHTML;
+}
+
+
+/* ==========================================================
+   8. HIỂN THỊ BÀI
+   ========================================================== */
+
+function renderExercises(){
+
+  if(!container){
+
+    console.error(
+      "Không tìm thấy #exerciseContainer"
+    );
+
+    return;
+  }
+
+
+  container.innerHTML =
+    EXERCISES.map(
+
+      function(exercise,exIndex){
+
+        return `
+
+          <section
+            class="exercise"
+            data-exercise="${exIndex}"
+          >
+
+
+            <!-- ================= HEADER ================= -->
+
+            <div class="exercise-header">
+
+
+              <!-- ================ TÊN BÀI ================ -->
+
+              <div
+                class="exercise-title-wrap"
+                data-toggle="${exIndex}"
+              >
+
+                <div class="exercise-title">
+
+                  <span class="toggle-icon">▸</span>
+
+                  ${escapeHTML(exercise.title)}
+
+                </div>
+
+
+                <div class="exercise-number">
+
+                  ${escapeHTML(exercise.id)}
+
+                </div>
+
+              </div>
+
+
+              <!-- ================= AUDIO ================= -->
+
+              <div class="controls">
+
+
+                <audio
+
+                  id="audio-${exIndex}"
+
+                  class="audio-player"
+
+                  preload="metadata"
+
+                  controls
+
+                  src="${AUDIO_FOLDER}${exercise.id}.mp3"
+
+                ></audio>
+
+
+                <!-- ================ SPEED ================ -->
+
+                <select
+                  class="speed-select"
+                  data-speed="${exIndex}"
+                  aria-label="Tốc độ audio"
+                >
+
+                  <option value="0.8">
+                    0.8x
+                  </option>
+
+                  <option value="0.9">
+                    0.9x
+                  </option>
+
+                  <option value="1" selected>
+                    1x
+                  </option>
+
+                  <option value="1.1">
+                    1.1x
+                  </option>
+
+                  <option value="1.2">
+                    1.2x
+                  </option>
+
+                  <option value="1.25">
+                    1.25x
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <!-- ================= BODY ================= -->
+
+            <div class="exercise-body">
+
+
+              <div class="listen-box cloze-box">
+
+
+                <div class="cloze-title">
+
+                  🎧 Nghe và điền từ còn thiếu
+
+                </div>
+
+
+                <div class="transcript">
+
+                  ${renderTranscript(exercise.transcript)}
+
+                </div>
+
+
+                ${
+                  exercise.note
+
+                  ?
+
+                  `
+                    <div class="listen-note">
+
+                      ${escapeHTML(exercise.note)}
+
+                    </div>
+                  `
+
+                  :
+
+                  ""
+                }
+
+
+              </div>
+
+
+              <!-- ================= CHẤM ================= -->
+
+              <div class="actions">
+
+
+                <div
+                  class="score"
+                  data-score
+                >
+
+                  Chưa chấm
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="show-answer"
+                  data-check="${exIndex}"
+                >
+
+                  Show answers
+
+                </button>
+
+
+              </div>
+
+
+            </div>
+
+          </section>
+
+        `;
+
+      }
+
+    ).join("");
+}
+
+
+/* ==========================================================
+   9. MỞ / ĐÓNG BÀI
+   ========================================================== */
+
+function toggleExercise(index){
+
+  const section =
+    document.querySelector(
+      `.exercise[data-exercise="${index}"]`
+    );
+
+
+  if(!section){
+    return;
+  }
+
+
+  const isOpen =
+    section.classList.toggle("open");
+
+
+  const icon =
+    section.querySelector(".toggle-icon");
+
+
+  if(icon){
+
+    icon.textContent =
+      isOpen ? "▾" : "▸";
+  }
+
+}
+
+
+/* ==========================================================
+   10. ĐỔI SPEED
+   ========================================================== */
+
+function changeSpeed(index,value){
+
+  const audio =
+    document.getElementById(
+      `audio-${index}`
+    );
+
+
+  if(!audio){
+    return;
+  }
+
+
+  audio.playbackRate =
+    Number(value);
+}
+
+
+/* ==========================================================
+   11. CHẤM BÀI
+   ========================================================== */
+
+function checkExercise(index){
+
+  const section =
+    document.querySelector(
+      `.exercise[data-exercise="${index}"]`
+    );
+
+  if(!section){
+    return;
+  }
+
+
+  const button =
+    section.querySelector(".show-answer");
+
+
+  /* ======================================================
+     NẾU ĐANG HIỆN ĐÁP ÁN → ẨN ĐÁP ÁN
+     ====================================================== */
+
+  const isShowingAnswers =
+    section.classList.contains("answers-shown");
+
+
+  if(isShowingAnswers){
+
+    section.classList.remove(
+      "answers-shown"
+    );
+
+
+    section
+      .querySelectorAll(".answer-input")
+      .forEach(function(input){
+
+        input.classList.remove(
+          "correct",
+          "wrong"
+        );
+
+      });
+
+
+    section
+      .querySelectorAll(".feedback")
+      .forEach(function(feedback){
+
+        feedback.className =
+          "feedback";
+
+        feedback.innerHTML =
+          "";
+
+      });
+
+
+    const score =
+      section.querySelector(
+        "[data-score]"
+      );
+
+
+    if(score){
+
+      score.textContent =
+        "Chưa chấm";
+
+    }
+
+
+    if(button){
+
+      button.textContent =
+        "Show answers";
+
+    }
+
+
+    updateTotalScore();
+
+    return;
+  }
+
+
+  /* ======================================================
+     NẾU ĐANG ẨN → HIỆN ĐÁP ÁN
+     ====================================================== */
+
+  const inputs =
+    section.querySelectorAll(
+      ".answer-input"
+    );
+
+
+  let correct = 0;
+
+  const total =
+    inputs.length;
+
+
+  inputs.forEach(
+
+    function(input,blankIndex){
+
+      const correctAnswer =
+        input.dataset.answer || "";
+
+
+      const feedback =
+        section.querySelector(
+          `[data-feedback="${blankIndex}"]`
+        );
+
+
+      /* RESET */
+
+      input.classList.remove(
+        "correct",
+        "wrong"
+      );
+
+
+      if(feedback){
+
+        feedback.className =
+          "feedback";
+
+        feedback.innerHTML =
+          "";
+
+      }
+
+
+      /* CHECK */
+
+      if(
+        isCorrect(
+          input.value,
+          correctAnswer
+        )
+      ){
+
+        correct++;
+
+
+        input.classList.add(
+          "correct"
+        );
+
+
+        if(feedback){
+
+          feedback.classList.add(
+            "correct"
+          );
+
+          feedback.innerHTML =
+            "✓";
+
+        }
+
+      }
+
+      else{
+
+        input.classList.add(
+          "wrong"
+        );
+
+
+        if(feedback){
+
+          feedback.classList.add(
+            "wrong"
+          );
+
+          feedback.innerHTML =
+
+            `→ <span class="correct-answer">${
+              escapeHTML(correctAnswer)
+            }</span>`;
+
+        }
+
+      }
+
+    }
+
+  );
+
+
+  /* ======================================================
+     ĐÁNH DẤU ĐANG HIỆN ĐÁP ÁN
+     ====================================================== */
+
+  section.classList.add(
+    "answers-shown"
+  );
+
+
+  /* ======================================================
+     ĐỔI TÊN NÚT
+     ====================================================== */
+
+  if(button){
+
+    button.textContent =
+      "Hide answers";
+
+  }
+
+
+  /* ======================================================
+     HIỆN ĐIỂM
+     ====================================================== */
+
+  const score =
+    section.querySelector(
+      "[data-score]"
+    );
+
+
+  if(score){
+
+    score.textContent =
+      `Điểm: ${correct}/${total}`;
+
+  }
+
+
+  updateTotalScore();
+
+}
+/* ==========================================================
+   12. TỔNG ĐIỂM
+   ========================================================== */
+
+function updateTotalScore(){
+
+  if(!totalResult){
+    return;
+  }
+
+
+  let correct = 0;
+
+  let total = 0;
+
+  let checkedExercises = 0;
+
+
+  EXERCISES.forEach(
+
+    function(exercise,index){
+
+      const section =
+        document.querySelector(
+          `.exercise[data-exercise="${index}"]`
+        );
+
+
+      if(!section){
+        return;
+      }
+
+
+      const score =
+        section.querySelector(
+          "[data-score]"
+        );
+
+
+      if(!score){
+        return;
+      }
+
+
+      const match =
+        score.textContent.match(
+          /(\d+)\/(\d+)/
+        );
+
+
+      if(match){
+
+        checkedExercises++;
+
+
+        correct +=
+          Number(match[1]);
+
+
+        total +=
+          Number(match[2]);
+      }
+
+    }
+
+  );
+
+
+  if(checkedExercises === 0){
+
+    totalResult.classList.remove(
+      "show"
+    );
+
+    return;
+  }
+
+
+  totalResult.classList.add(
+    "show"
+  );
+
+
+  totalResult.textContent =
+
+    `Đã chấm ${checkedExercises}/${EXERCISES.length} bài • ` +
+
+    `Tổng: ${correct}/${total}`;
+}
+
+
+/* ==========================================================
+   13. CLICK MỞ / ĐÓNG
+   ========================================================== */
+
+document.addEventListener(
+  "click",
+
+  function(event){
+
+    const title =
+      event.target.closest(
+        ".exercise-title-wrap"
+      );
+
+
+    if(title){
+
+      const index =
+        Number(
+          title.dataset.toggle
+        );
+
+
+      toggleExercise(index);
+
+      return;
+    }
+
+
+    /* ==============================================
+       SHOW ANSWERS
+       ============================================== */
+
+    const button =
+      event.target.closest(
+        ".show-answer"
+      );
+
+
+    if(button){
+
+      const index =
+        Number(
+          button.dataset.check
+        );
+
+
+      checkExercise(index);
+
+      return;
+    }
+
+  }
+);
+
+
+/* ==========================================================
+   14. SPEED
+   ========================================================== */
+
+document.addEventListener(
+  "change",
+
+  function(event){
+
+    const select =
+      event.target.closest(
+        ".speed-select"
+      );
+
+
+    if(!select){
+      return;
+    }
+
+
+    const index =
+      Number(
+        select.dataset.speed
+      );
+
+
+    changeSpeed(
+      index,
+      select.value
+    );
+
+  }
+);
+
+
+/* ==========================================================
+   15. ENTER ĐỂ CHẤM
+   ========================================================== */
+
+document.addEventListener(
+  "keydown",
+
+  function(event){
+
+    if(event.key !== "Enter"){
+      return;
+    }
+
+
+    const input =
+      event.target.closest(
+        ".answer-input"
+      );
+
+
+    if(!input){
+      return;
+    }
+
+
+    const section =
+      input.closest(
+        ".exercise"
+      );
+
+
+    if(!section){
+      return;
+    }
+
+
+    const index =
+      Number(
+        section.dataset.exercise
+      );
+
+
+    checkExercise(index);
+
+  }
+);
+
+
+/* ==========================================================
+   16. KHỞI ĐỘNG
+   ========================================================== */
+
+renderExercises();
+
+
+</script>
+
+</body>
+</html>
